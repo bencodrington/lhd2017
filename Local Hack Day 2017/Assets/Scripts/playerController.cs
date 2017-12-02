@@ -5,6 +5,8 @@ using UnityEngine;
 public class playerController : MonoBehaviour {
 
 	private Rigidbody2D rb2d;
+	public Animator flash;
+
 	public float jumpForce;
 	public float fallForce;
 	public float defaultGravity;
@@ -40,6 +42,9 @@ public class playerController : MonoBehaviour {
 	}
 		
 	void attack() {
+
+		// Trigger flash animation
+		flash.SetTrigger("Flash");
 
 		if (weapon.enemies.Length != 0) {
 			// Destroy enemies
