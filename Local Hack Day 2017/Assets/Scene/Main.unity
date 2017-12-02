@@ -4040,6 +4040,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b560174d074bbe4aac833d91f305002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 624431686}
+  highScoreText: {fileID: 1654195931}
+  newHighScoreColor: {r: 0.08109864, g: 0.9191176, b: 0.36429137, a: 0}
+  defaultColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
+  player: {fileID: 1621621522}
 --- !u!1 &1334916785
 GameObject:
   m_ObjectHideFlags: 0
@@ -4315,6 +4320,7 @@ MonoBehaviour:
   playerSpeed: 5
   camera: {fileID: 676550586}
   gameManager: {fileID: 1194925858}
+  scoreManager: {fileID: 1194925859}
   attackSound: {fileID: 1876925614}
   jumpSound: {fileID: 1334916787}
   jumpForce: 10
@@ -4322,6 +4328,7 @@ MonoBehaviour:
   defaultGravity: 1
   maxGravity: 10
   weapon: {fileID: 1621621528}
+  startPos: {x: 2068182, y: 0, z: 0}
 --- !u!4 &1621621527
 Transform:
   m_ObjectHideFlags: 0

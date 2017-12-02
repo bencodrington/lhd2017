@@ -9,6 +9,9 @@ public class playerController : MonoBehaviour {
 	public float playerSpeed;
 	public GameObject camera;
 	public gameManager gameManager;
+	public ScoreManager scoreManager;
+	public enemyPool enemies;
+	public starPool stars;
 
 	public AudioSource attackSound;
 	public AudioSource jumpSound;
@@ -18,6 +21,9 @@ public class playerController : MonoBehaviour {
 	public float defaultGravity;
 	public float maxGravity;
 	public isHitting weapon;
+
+	public Vector3 startPos;
+	private Quaternion startRot = Quaternion.identity;
 	private int jumpCap;
 	private int numJumps;
 
@@ -94,6 +100,19 @@ public class playerController : MonoBehaviour {
 	}
 
 	void handleInput() {
+
+		if (gameManager.gameOver) {
+			if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.F)) {
+				gameManager.Reset();
+				scoreManager.Reset();
+				stars.resetStars();
+				enemies.resetEnemies();
+				Reset();
+			}
+			return;
+		}
+
+
 		if (Input.GetKeyDown (KeyCode.Space) && numJumps > 0) {
 
 			jump ();
@@ -119,18 +138,14 @@ public class playerController : MonoBehaviour {
 			rb2d.velocity = new Vector2 (-playerSpeed, rb2d.velocity.y);
 
 		}
+	}
 
-		/*
-		if (Input.GetKey (KeyCode.RightArrow)) {
+	void Reset() {
+		// Reset Position and Rotation
+		transform.position = startPos;
+		transform.rotation = startRot;
+		transform.localScale = new Vector3(1, 1, 1);
+		numJumps = jumpCap;
 
-			rb2d.velocity = new Vector2 (playerSpeed, rb2d.velocity.y);
-
-		}
-
-		if (Input.GetKey (KeyCode.LeftArrow)) {
-
-			rb2d.velocity = new Vector2 (-playerSpeed, rb2d.velocity.y);
-
-		}*/
 	}
 }

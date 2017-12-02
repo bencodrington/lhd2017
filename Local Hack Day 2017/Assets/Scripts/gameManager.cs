@@ -34,4 +34,8 @@ public class gameManager : MonoBehaviour {
 		gameOver = true;
 
 	}
+
+	public void Reset() {
+		gameOver = false;
+	}
 }
