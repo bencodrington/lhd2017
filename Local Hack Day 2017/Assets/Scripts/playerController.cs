@@ -10,6 +10,9 @@ public class playerController : MonoBehaviour {
 	public GameObject camera;
 	public gameManager gameManager;
 
+	public AudioSource attackSound;
+	public AudioSource jumpSound;
+
 	public float jumpForce;
 	public float fallForce;
 	public float defaultGravity;
@@ -44,16 +47,6 @@ public class playerController : MonoBehaviour {
 
 		}
 	}
-
-	void die() {
-
-		if (transform.position.y < camera.transform.position.y - 4) {
-
-
-
-		}
-
-	}
 		
 	void attack() {
 
@@ -69,6 +62,9 @@ public class playerController : MonoBehaviour {
 			numJumps = jumpCap;
 		}
 
+		// Play attack sound
+		attackSound.Play();
+
 	}
 
 	void jump() {
@@ -77,6 +73,9 @@ public class playerController : MonoBehaviour {
 		rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
 		rb2d.AddForce (transform.up * jumpForce, ForceMode2D.Impulse);
 		numJumps -= 1;
+
+		// Play jump sound
+		jumpSound.Play();
 	}
 	
 	// Update is called once per frame
