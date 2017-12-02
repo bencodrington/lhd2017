@@ -7,6 +7,8 @@ public class playerController : MonoBehaviour {
 	private Rigidbody2D rb2d;
 	public Animator flash;
 	public float playerSpeed;
+	public GameObject camera;
+	public gameManager gameManager;
 
 	public float jumpForce;
 	public float fallForce;
@@ -42,6 +44,16 @@ public class playerController : MonoBehaviour {
 
 		}
 	}
+
+	void die() {
+
+		if (transform.position.y < camera.transform.position.y - 4) {
+
+
+
+		}
+
+	}
 		
 	void attack() {
 
@@ -73,6 +85,12 @@ public class playerController : MonoBehaviour {
 		handleInput ();
 
 		gravity ();
+
+		if (transform.position.y < camera.transform.position.y - 8) {
+
+			gameManager.youDied ();
+
+		}
 		
 	}
 
