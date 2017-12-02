@@ -32,18 +32,20 @@ public class ScoreManager : MonoBehaviour {
 			score = temp;
 		}
 
-		if (score > highScore) {
+		if (score >= highScore) {
 			highScore = score;
 			// Change colour of highScoreText
 			highScoreText.color = newHighScoreColor;
 		} else {
 			// Reset highScoreText colour
+			highScoreText.color = defaultColor;
 		}
 
 		updateText();
 	}
 
 	void updateText() {
+		Debug.Log (highScore);
 		scoreText.text = score.ToString();
 		highScoreText.text = highScore.ToString();
 	}

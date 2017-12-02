@@ -37,5 +37,7 @@ public class gameManager : MonoBehaviour {
 
 	public void Reset() {
 		gameOver = false;
+		gameOverText.SetActive (false);
+
 	}
 }

@@ -6,12 +6,13 @@ public class playerController : MonoBehaviour {
 
 	private Rigidbody2D rb2d;
 	public Animator flash;
+	public float launch;
 	public float playerSpeed;
 	public GameObject camera;
 	public gameManager gameManager;
 	public ScoreManager scoreManager;
 	public enemyPool enemies;
-	public starPool stars;
+	public StarPool stars;
 
 	public AudioSource attackSound;
 	public AudioSource jumpSound;
@@ -36,6 +37,7 @@ public class playerController : MonoBehaviour {
 		numJumps = jumpCap;
 
 		rb2d = GetComponent<Rigidbody2D> ();
+		rb2d.AddForce (transform.up * launch, ForceMode2D.Impulse);
 		
 	}
 		
@@ -107,6 +109,7 @@ public class playerController : MonoBehaviour {
 				scoreManager.Reset();
 				stars.resetStars();
 				enemies.resetEnemies();
+				camera.transform.position = new Vector3 (0, 0, -10);
 				Reset();
 			}
 			return;
@@ -146,6 +149,8 @@ public class playerController : MonoBehaviour {
 		transform.rotation = startRot;
 		transform.localScale = new Vector3(1, 1, 1);
 		numJumps = jumpCap;
+		rb2d.velocity = new Vector2(0, 0);
+		rb2d.AddForce (transform.up * launch, ForceMode2D.Impulse);
 
 	}
 }
