@@ -6,6 +6,7 @@ public class playerController : MonoBehaviour {
 
 	private Rigidbody2D rb2d;
 	public Animator flash;
+	public float playerSpeed;
 
 	public float jumpForce;
 	public float fallForce;
@@ -26,6 +27,7 @@ public class playerController : MonoBehaviour {
 		rb2d = GetComponent<Rigidbody2D> ();
 		
 	}
+		
 
 	void gravity() {
 
@@ -86,5 +88,32 @@ public class playerController : MonoBehaviour {
 			attack ();
 
 		}
+
+		if (Input.GetKeyDown(KeyCode.RightArrow)) {
+
+			transform.localScale = new Vector3 (-1, 1, 1);
+			rb2d.velocity = new Vector2 (playerSpeed, rb2d.velocity.y);
+
+		}
+
+		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+
+			transform.localScale = new Vector3 (1, 1, 1);
+			rb2d.velocity = new Vector2 (-playerSpeed, rb2d.velocity.y);
+
+		}
+
+		/*
+		if (Input.GetKey (KeyCode.RightArrow)) {
+
+			rb2d.velocity = new Vector2 (playerSpeed, rb2d.velocity.y);
+
+		}
+
+		if (Input.GetKey (KeyCode.LeftArrow)) {
+
+			rb2d.velocity = new Vector2 (-playerSpeed, rb2d.velocity.y);
+
+		}*/
 	}
 }

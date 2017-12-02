@@ -28,7 +28,7 @@ public class isHitting : MonoBehaviour {
 	void checkForCollisions() {
 
 		// TODO: have a multiplier for which direction the player is facing
-		Vector2 point = new Vector2(transform.position.x + weaponOffsetX, transform.position.y + weaponOffsetY);
+		Vector2 point = new Vector2(transform.position.x + weaponOffsetX*transform.localScale.x, transform.position.y + weaponOffsetY);
 		int layermask = 1 << LayerMask.NameToLayer("enemy");
 		enemies = Physics2D.OverlapCircleAll(point, weaponSize, layermask);
 		Debug.DrawLine(transform.position, new Vector3(point.x, point.y));
