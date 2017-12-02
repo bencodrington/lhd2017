@@ -18,7 +18,7 @@ public class playerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		jumpCap = 1;
+		jumpCap = 100;
 		numJumps = jumpCap;
 
 		rb2d = GetComponent<Rigidbody2D> ();
