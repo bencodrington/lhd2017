@@ -17,6 +17,8 @@ public class enemyPool : MonoBehaviour {
 	private float spawnYPos;
 	private float spawnXPos;
 	private int lowestEnemy = 0;
+	private BoxCollider2D currentCol;
+	private SpriteRenderer currentSprite;
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +27,7 @@ public class enemyPool : MonoBehaviour {
 
 		for (int i = 0; i < enemyPoolSize; i++) {
 
-			enemies [i] = (GameObject)Instantiate (enemyPrefab, new Vector2(-10f, i*4f), Quaternion.identity);
+			enemies [i] = (GameObject)Instantiate (enemyPrefab, new Vector2(-10f, i*4f - 6f), Quaternion.identity);
 
 		}
 		

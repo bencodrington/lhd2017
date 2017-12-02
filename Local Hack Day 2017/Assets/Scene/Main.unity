@@ -77,15 +77,17 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
   m_LightingDataAsset: {fileID: 0}
   m_ShadowMaskMode: 2
 --- !u!196 &4
@@ -177,6 +179,7 @@ SpriteRenderer:
   m_Size: {x: 0.7, y: 2.58}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
 --- !u!1 &604970126
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1621621522}
-  allowance: 3
+  allowance: -0.5
 --- !u!1 &885814115
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +381,7 @@ SpriteRenderer:
   m_Size: {x: 1.58, y: 2.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
 --- !u!1 &1072925590
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +495,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
 --- !u!4 &1180484822
 Transform:
   m_ObjectHideFlags: 0
@@ -531,7 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681444f9371e646809b510b46530a015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPoolSize: 3
+  enemyPoolSize: 4
   enemyPrefab: {fileID: 1967709991822336, guid: 7d0a012dd505c43c194eae41bfa74560,
     type: 2}
   enemyMaxX: 3
@@ -658,7 +663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   weapon: {fileID: 0}
-  weaponOffsetX: -1
+  weaponOffsetX: -2
   weaponOffsetY: 0
   weaponSize: 0.5
 --- !u!1 &1637270086
@@ -788,3 +793,4 @@ SpriteRenderer:
   m_Size: {x: 2.15, y: 2.21}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1

@@ -18,7 +18,7 @@ public class playerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		jumpCap = 100;
+		jumpCap = 2;
 		numJumps = jumpCap;
 
 		rb2d = GetComponent<Rigidbody2D> ();
@@ -43,6 +43,9 @@ public class playerController : MonoBehaviour {
 
 		if (weapon.enemies.Length != 0) {
 			// Destroy enemies
+			for (int i = 0; i < weapon.enemies.Length; i++) {
+				weapon.enemies [i].gameObject.GetComponent<enemyController> ().killEnemy();
+			}
 			// Reset jump
 			numJumps = jumpCap;
 		}
