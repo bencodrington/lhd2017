@@ -4,38 +4,34 @@ using UnityEngine;
 
 public class isHitting : MonoBehaviour {
 
-	private GameObject enemy;
-	public bool isOverlap;
+	public Collider2D[] enemies;
 	public BoxCollider2D weapon;
+	public float weaponOffsetX;
+	public float weaponOffsetY;
+	public float weaponSize;
 
 
 	// Use this for initialization
 	void Start () {
 
-		enemy = null;
+		enemies = null;
 		
-	}
-
-	void onCollisionEnter (Collision col) {
-
-		if (col.gameObject.name == "enemy") {
-
-			enemy = col.gameObject;
-
-		}
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		Debug.Log (LayerMask.NameToLayer ("enemy"));
-
-		if (weapon.IsTouchingLayers (LayerMask.NameToLayer ("enemy"))) {
-
-			isOverlap = true;
-
-		}
+		checkForCollisions();
 		
+	}
+
+	void checkForCollisions() {
+
+		// TODO: have a multiplier for which direction the player is facing
+		Vector2 point = new Vector2(transform.position.x + weaponOffsetX, transform.position.y + weaponOffsetY);
+		int layermask = 1 << LayerMask.NameToLayer("enemy");
+		enemies = Physics2D.OverlapCircleAll(point, weaponSize, layermask);
+		Debug.DrawLine(transform.position, new Vector3(point.x, point.y));
+
 	}
 }

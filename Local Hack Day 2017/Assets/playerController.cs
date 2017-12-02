@@ -9,12 +9,17 @@ public class playerController : MonoBehaviour {
 	public float fallForce;
 	public float defaultGravity;
 	public float maxGravity;
-	public BoxCollider2D weapon;
+	public isHitting weapon;
+	private int jumpCap;
+	private int numJumps;
 
 
 
 	// Use this for initialization
 	void Start () {
+
+		jumpCap = 1;
+		numJumps = jumpCap;
 
 		rb2d = GetComponent<Rigidbody2D> ();
 		
@@ -36,26 +41,42 @@ public class playerController : MonoBehaviour {
 		
 	void attack() {
 
-
+		if (weapon.enemies.Length != 0) {
+			// Destroy enemies
+			// Reset jump
+			numJumps = jumpCap;
+		}
 
 	}
 
 	void jump() {
 
+		rb2d.gravityScale = defaultGravity;
+		rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
 		rb2d.AddForce (transform.up * jumpForce, ForceMode2D.Impulse);
-
+		numJumps -= 1;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		handleInput ();
+
+		gravity ();
+		
+	}
+
+	void handleInput() {
+		if (Input.GetKeyDown (KeyCode.Space) && numJumps > 0) {
 
 			jump ();
 
 		}
 
-		gravity ();
-		
+		if (Input.GetKeyDown (KeyCode.F)) {
+
+			attack ();
+
+		}
 	}
 }

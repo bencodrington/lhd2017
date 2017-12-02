@@ -77,17 +77,15 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFilterTypeDirect: 0
-    m_PVRFilterTypeIndirect: 0
-    m_PVRFilterTypeAO: 0
+    m_PVRFiltering: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
-    m_PVRFilteringAtrousPositionSigmaIndirect: 2
-    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_PVRFilteringAtrousColorSigma: 1
+    m_PVRFilteringAtrousNormalSigma: 1
+    m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
   m_ShadowMaskMode: 2
 --- !u!196 &4
@@ -302,7 +300,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &932583062
 Transform:
   m_ObjectHideFlags: 0
@@ -398,7 +395,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &1180484822
 Transform:
   m_ObjectHideFlags: 0
@@ -429,7 +425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1372505388
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -495,7 +491,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &1372505390
 Transform:
   m_ObjectHideFlags: 0
@@ -520,8 +515,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7652466f6fdf4f4a97f80d821d0299e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOverlap: 0
+  enemies: []
   weapon: {fileID: 1372505388}
+  weaponOffsetX: 0
+  weaponOffsetY: 0
+  weaponSize: 0
 --- !u!1 &1621621522
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +532,7 @@ GameObject:
   - component: {fileID: 1621621525}
   - component: {fileID: 1621621524}
   - component: {fileID: 1621621523}
+  - component: {fileID: 1621621528}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -601,7 +600,7 @@ MonoBehaviour:
   fallForce: 0.4
   defaultGravity: 1
   maxGravity: 10
-  weapon: {fileID: 1372505388}
+  weapon: {fileID: 1621621528}
 --- !u!212 &1621621526
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -642,7 +641,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &1621621527
 Transform:
   m_ObjectHideFlags: 0
@@ -657,3 +655,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1621621528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1621621522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7652466f6fdf4f4a97f80d821d0299e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
+  weapon: {fileID: 0}
+  weaponOffsetX: -1
+  weaponOffsetY: 0
+  weaponSize: 0.5
